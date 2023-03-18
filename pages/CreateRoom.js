@@ -61,16 +61,46 @@ function Main() {
   }
 
   return (
-    <div>
-      <div className="bg-blue-500 flex justify-center text-white text-lg bg-gradient-to-r from-blue-600 to-blue-400">
-        MetaStream
+    <div className="font-main">
+      <div className="bg-[#003FF7] flex justify-center text-white text-lg bg-gradient-to-r border-b border-white h-[5vh] items-center font-semibold">
+        ✨ Reimagine livestream possibilities with MetaStream
       </div>
 
-      <div className="min-h-screen bg-gradient-to-r from-[#2980B9] via-[#6DD5FA] to-white pt-20 max-sm:px-5 px-5">
-        <div className="flex flex-row max-sm:flex-col justify-evenly gap-10">
+      <div className="min-h-screen bg-gradient-to-b from-[#003FF7] to-[#6243b3fa]  pt-44 max-sm:px-5 px-5 w-full">
+        <div className="flex flex-row max-sm:flex-col justify-center gap-10 w-[70%] m-auto">
           <div className="">
-            <h1 className="text-4xl text-white">MetaStream</h1>
-            <div className="flex flex-col gap-4 mt-10 items-start min-w-[400px]">
+            <div className="header">
+              <h1 className="text-5xl text-white leading-15">
+                <span className="animated-text ">
+                  Decentralized Streaming Platform,
+                </span>
+                <br /> Create your own video experiences
+              </h1>
+            </div>
+            <div className="w-[50%] flex justify-center">
+              <div className="modal">
+                <Button auto onClick={handler} scale={2}>
+                  Create Stream
+                </Button>
+
+                <Modal visible={state} onClose={closeHandler}>
+                  <Modal.Title>Modal</Modal.Title>
+                  <Modal.Content>
+                    <p>Write name of your stream:</p>
+                  </Modal.Content>
+                  <Input
+                    width="100%"
+                    onChange={(e) => setStreamName(e.target.value)}
+                  ></Input>
+                  <Modal.Action passive onClick={() => setState(false)}>
+                    Cancel
+                  </Modal.Action>
+                  <Modal.Action onClick={createNewStream}>Submit</Modal.Action>
+                </Modal>
+              </div>
+            </div>
+
+            {/* <div className="flex flex-col gap-4 mt-10 items-start min-w-[400px]">
               <div className="modal">
                 <Button auto onClick={handler}>
                   Show Modal
@@ -95,7 +125,7 @@ function Main() {
               <button className="rounded p-4 text-xl bg-[#F89D0A] text-white">
                 JOIN SESSION
               </button>
-              <Link href="Settings">
+              <Link href="">
                 <button className="rounded p-4 text-xl bg-[#F89D0A] text-white">
                   Watch to earn
                 </button>
@@ -113,9 +143,9 @@ function Main() {
                   <p>0x9da800B4585907bef289003d3a5aD43753a8Cca8</p>
                 </div>
               )}
-            </div>
+              </div> */}
           </div>
-          <div className="flex flex-col text-gray-500 gap-8 items-start">
+          {/* <div className="flex flex-col text-gray-500 gap-8 items-start">
             <h1 className="text-3xl text-gray-600">Welcome</h1>
             <main className="text-lg max-sm:text-sm ">
               <p>Hi there, and welcome to MetaStream!</p>
@@ -147,7 +177,7 @@ function Main() {
                 className="w-[500px] pt-20 max-md:w-96 "
               />
             </main>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

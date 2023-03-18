@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animated-text {
+  background: linear-gradient(to right, #ffb800, #d75ffa, #1efa34);
+  background-clip: text;
+  background-size: 200%;
+  -webkit-text-fill-color: transparent;
+  animation: textanimation 3s linear infinite;
+}
+
+@keyframes textanimation {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
