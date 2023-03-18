@@ -27,7 +27,7 @@ function Main() {
               <button className="rounded p-4 text-xl bg-[#F89D0A] text-white">
                 JOIN SESSION
               </button>
-              <Link href="Settings">
+              <Link href="mintNFT">
                 <button className="rounded p-4 text-xl bg-[#F89D0A] text-white">
                   Watch to earn
                 </button>

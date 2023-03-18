@@ -13,7 +13,7 @@ import { Web3Button } from "@thirdweb-dev/react";
 import { MdArrowBack } from "react-icons/md";
 import Link from "next/link";
 
-function Settings() {
+function MintNFT() {
   const address = useAddress();
   const editionDropAddress = "0x74d68bEd595cc75d712be61Ed89Ea38cbF7Da2e8";
   const { contract: editionDrop } = useContract(
@@ -59,6 +59,11 @@ function Settings() {
             <p className="text-white text-2xl">
               Mint an nft to join our Watch to earn system 👀
             </p>
+            <Link href="components/FAQ">
+              <p className="text-white">
+                How the heck does all of this work ?! F.A.Q
+              </p>
+            </Link>
 
             <img src={"erc1155.png"} className="max-w-[500px] rounded" />
             <div>
@@ -90,6 +95,6 @@ function Settings() {
   );
 }
 
-export default Settings;
+export default MintNFT;
 
 //2a0845
