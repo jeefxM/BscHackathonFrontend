@@ -66,7 +66,7 @@ function Main() {
         ✨ Reimagine livestream possibilities with MetaStream
       </div>
 
-      <div className="min-h-screen bg-gradient-to-b from-[#003FF7] to-[#6243b3fa]  pt-44 max-sm:px-5 px-5 w-full">
+      <div className="min-h-screen bg-gradient-to-b from-[#003FF7] to-[#6243b3fa]  pt-32 max-sm:px-5 px-5 w-full">
         <div className="flex flex-row max-sm:flex-col justify-center gap-10 w-[70%] m-auto">
           <div className="">
             <div className="header">
@@ -77,7 +77,7 @@ function Main() {
                 <br /> Create your own video experiences
               </h1>
             </div>
-            <div className="w-[50%] flex justify-center">
+            <div className="w-[50%] flex justify-center pt-5">
               <div className="modal">
                 <Button auto onClick={handler} scale={2}>
                   Create Stream
@@ -98,6 +98,7 @@ function Main() {
                   <Modal.Action onClick={createNewStream}>Submit</Modal.Action>
                 </Modal>
               </div>
+              <div className=""></div>
             </div>
 
             {/* <div className="flex flex-col gap-4 mt-10 items-start min-w-[400px]">
