@@ -10,6 +10,23 @@
   animation: textanimation 3s linear infinite;
 }
 
+.homebackground {
+  background-image: url("../public/background.svg");
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: cover;
+  animation: topanimation 15s linear infinite;
+}
+
+@keyframes topanimation {
+  0% {
+    background-position: 0% 0%; /* start at the initial position */
+  }
+  100% {
+    background-position: 100% 100%; /* end at the top position */
+  }
+}
+
 @keyframes textanimation {
   from {
     background-position: 0% center;
@@ -17,4 +34,24 @@
   to {
     background-position: -200% center;
   }
+}
+
+.custom-shape-divider-top-1679188239 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1679188239 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 86px;
+}
+
+.shape-fill {
+  fill: white;
 }

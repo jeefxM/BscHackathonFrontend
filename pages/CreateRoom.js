@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import Stream from "../public/Stream.json";
 import Link from "next/link";
+import Stars from "../public/abstract-stars.json";
 import { useRouter } from "next/router";
-import { Button, Modal, Input } from "@geist-ui/core";
+import { Button, Modal, Input, Toggle, Spacer } from "@geist-ui/core";
+import { MdAdd, MdStar } from "react-icons/md";
+import PageMeta from "./components/PageMeta";
+import Footer from "./components/Footer";
+import HomeCard from "./components/HomeCard";
 
 function Main() {
   const [isVisable, setIsVisable] = useState(false);
-  const [state, setState] = useState(false);
-  const handler = () => setState(true);
-  const closeHandler = (event) => {
-    setState(false);
+  const [firstModal, setFirstModal] = useState(false);
+  const firstHandler = () => setFirstModal(true);
+  const closeFirstHandler = (event) => {
+    setFirstModal(false);
+    console.log("closed");
+  };
+
+  const [secondModal, setSecondModal] = useState(false);
+  const secondHandler = () => setSecondModal(true);
+  const closeSecondHandler = (event) => {
+    setSecondModal(false);
     console.log("closed");
   };
 
@@ -59,128 +71,142 @@ function Main() {
       console.log(error);
     }
   }
+  //path to join stream
+
+  const [streamPath, updateStreamPath] = useState("");
+
+  async function joinExistingStream() {
+    const res = await fetch(
+      `https://livepeer.studio/api/stream/${streamPath}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.LIVEPEER_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    router.push(`/stream/${streamPath}`);
+  }
+  const [theme, changeTheme] = useState("dark");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+  }, [theme]);
+
+  //darkmode
+
+  const toggleTheme = () => {
+    setTimeout(() => {
+      changeTheme(theme === "dark" ? "light" : "dark");
+    }, 100);
+  };
 
   return (
-    <div className="font-main">
-      <div className="bg-[#003FF7] flex justify-center text-white text-lg bg-gradient-to-r border-b border-white h-[5vh] items-center font-semibold">
-        ✨ Reimagine livestream possibilities with MetaStream
-      </div>
+    <div className="font-main bg-gradient-to-b from-[#003FF7] to-[#6243b3fa] dark:bg-black min-h-screen   ">
+      <PageMeta />
 
-      <div className="min-h-screen bg-gradient-to-b from-[#003FF7] to-[#6243b3fa]  pt-32 max-sm:px-5 px-5 w-full">
-        <div className="flex flex-row max-sm:flex-col justify-center gap-10 w-[70%] m-auto">
-          <div className="">
-            <div className="header">
-              <h1 className="text-5xl text-white leading-15">
-                <span className="animated-text ">
-                  Decentralized Streaming Platform,
-                </span>
-                <br /> Create your own video experiences
-              </h1>
-            </div>
-            <div className="w-[50%] flex justify-center pt-5">
-              <div className="modal">
-                <Button auto onClick={handler} scale={2}>
-                  Create Stream
-                </Button>
-
-                <Modal visible={state} onClose={closeHandler}>
-                  <Modal.Title>Modal</Modal.Title>
-                  <Modal.Content>
-                    <p>Write name of your stream:</p>
-                  </Modal.Content>
-                  <Input
-                    width="100%"
-                    onChange={(e) => setStreamName(e.target.value)}
-                  ></Input>
-                  <Modal.Action passive onClick={() => setState(false)}>
-                    Cancel
-                  </Modal.Action>
-                  <Modal.Action onClick={createNewStream}>Submit</Modal.Action>
-                </Modal>
-              </div>
-              <div className=""></div>
-            </div>
-
-            {/* <div className="flex flex-col gap-4 mt-10 items-start min-w-[400px]">
-              <div className="modal">
-                <Button auto onClick={handler}>
-                  Show Modal
-                </Button>
-
-                <Modal visible={state} onClose={closeHandler}>
-                  <Modal.Title>Modal</Modal.Title>
-                  <Modal.Content>
-                    <p>Write name of your stream:</p>
-                  </Modal.Content>
-                  <Input
-                    width="100%"
-                    onChange={(e) => setStreamName(e.target.value)}
-                  ></Input>
-                  <Modal.Action passive onClick={() => setState(false)}>
-                    Cancel
-                  </Modal.Action>
-                  <Modal.Action onClick={createNewStream}>Submit</Modal.Action>
-                </Modal>
-              </div>
-
-              <button className="rounded p-4 text-xl bg-[#F89D0A] text-white">
-                JOIN SESSION
-              </button>
-              <Link href="">
-                <button className="rounded p-4 text-xl bg-[#F89D0A] text-white">
-                  Watch to earn
-                </button>
-              </Link>
-
-              <button
-                className="rounded p-4 text-xl bg-[#F89D0A] text-white"
-                onClick={() => setIsVisable(!isVisable)}
-              >
-                DONATE
-              </button>
-              {isVisable && (
-                <div className="text-gray-300">
-                  <p>If you wish to donate it would be much appreciated ^_^ </p>
-                  <p>0x9da800B4585907bef289003d3a5aD43753a8Cca8</p>
-                </div>
-              )}
-              </div> */}
-          </div>
-          {/* <div className="flex flex-col text-gray-500 gap-8 items-start">
-            <h1 className="text-3xl text-gray-600">Welcome</h1>
-            <main className="text-lg max-sm:text-sm ">
-              <p>Hi there, and welcome to MetaStream!</p>
-              <p>
-                We're glad you're here and excited to have you try out our
-                platform.
-              </p>
-              <p>
-                With MetaStream, you can start and join video sessions with
-                ease.
-              </p>
-              <p>
-                Whether you're hosting a watch party, collaborating on a
-                project, or simply hanging out with friends, we've got you
-                covered.
-              </p>
-              <p>
-                As a MVP, our product is still in development, but we're working
-                hard to bring you new features and improvements.
-              </p>
-              <p>
-                If you have any feedback or suggestions, we'd love to hear from
-                you. Just click on the "Settings" button to get in touch with
-                us.
-              </p>
-              <p>Thanks for choosing MetaStream!</p>
+      <div className="   pt-32 sm:pt-20  w-full  ">
+        <div className="toggle absolute top-14 right-20 sm:right-10">
+          <Spacer h={0.5} />
+          <Toggle scale={3} onClick={toggleTheme} />
+        </div>
+        <div className="flex flex-col justify-center gap-10 w-[70%] m-auto  ">
+          <div className="header w-full relative ">
+            <h1 className="text-5xl text-white leading-15 sm:text-4xl text-center ">
+              <span className="animated-text  ">
+                Decentralized Streaming Platform,
+              </span>
+              <br /> Create your own video experiences
+            </h1>
+            <span className="absolute left-52  bottom-5 sm:bottom-0">
               <Lottie
-                animationData={Stream}
-                className="w-[500px] pt-20 max-md:w-96 "
+                animationData={Stars}
+                style={{ height: "100px", width: "100px" }}
               />
-            </main>
-          </div> */}
+            </span>
+          </div>
+          <div className=" flex justify-center pt-5 sm:flex-col sm:pt-1 sm:items-center ">
+            <div className="modal mx-4">
+              <Button
+                auto
+                onClick={firstHandler}
+                scale={2}
+                style={{
+                  backgroundColor: "#F89D0A",
+                  color: "white",
+                  border: "black solid 2px",
+                }}
+              >
+                <MdAdd className="mr-1" />
+                Create Stream
+              </Button>
+
+              <Modal
+                visible={firstModal}
+                onClose={closeFirstHandler}
+                key="firstmodal"
+              >
+                <Modal.Title>Modal</Modal.Title>
+                <Modal.Content>
+                  <p>Write name of your stream:</p>
+                </Modal.Content>
+                <Input
+                  width="100%"
+                  onChange={(e) => setStreamName(e.target.value)}
+                ></Input>
+                <Modal.Action passive onClick={() => closeFirstHandler(false)}>
+                  Cancel
+                </Modal.Action>
+                <Modal.Action onClick={createNewStream}>SUBMITZ</Modal.Action>
+              </Modal>
+            </div>
+            <div className="modal join mx-4 sm:pt-5">
+              <Button
+                auto
+                onClick={secondHandler}
+                scale={2}
+                style={{
+                  backgroundColor: "#43DA49",
+                  color: "white",
+                  border: "black solid 2px",
+                }}
+              >
+                <MdStar className="mr-1" />
+                Join Stream
+              </Button>
+
+              <Modal
+                visible={secondModal}
+                onClose={closeSecondHandler}
+                key="secondmodal"
+              >
+                <Modal.Title>Modal</Modal.Title>
+                <Modal.Content>
+                  <p>Write name of your stream:</p>
+                </Modal.Content>
+                <Input
+                  width="100%"
+                  onChange={(e) => updateStreamPath(e.target.value)}
+                ></Input>
+                <Modal.Action passive onClick={() => closeSecondHandler(false)}>
+                  Cancel
+                </Modal.Action>
+                <Modal.Action onClick={joinExistingStream}>
+                  Submit2
+                </Modal.Action>
+              </Modal>
+            </div>
+          </div>
         </div>
       </div>
+      <HomeCard />
+      <Footer />
     </div>
   );
 }
