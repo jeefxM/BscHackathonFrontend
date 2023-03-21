@@ -1,14 +1,12 @@
 import React from "react";
-import MetamaskConnect from "./components/metamaskConnect";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+
 import {
   useAddress,
-  ConnectWallet,
   useContract,
   useNFTBalance,
   useBalance,
 } from "@thirdweb-dev/react";
-import { useState, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { Web3Button } from "@thirdweb-dev/react";
 import { MdArrowBack } from "react-icons/md";
 import Link from "next/link";
