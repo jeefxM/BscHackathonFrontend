@@ -86,7 +86,10 @@ const Chat = () => {
   };
 
   return (
-    <div className="relative h-full w-full bg-white ml-3 rounded-2xl">
+    <div
+      className="relative h-full w-full bg-white ml-3 rounded-2xl sm:h-96"
+      style={{ overflow: "hidden", overflowX: "hidden" }}
+    >
       <div className="absolute top-0 max-h-full overflow-y-scroll w-96 bg-white rounded-2xl">
         <ul className="space-y-6">
           {newMessagesArray().map((msg, index) => (
@@ -110,12 +113,12 @@ const Chat = () => {
           ))}
         </ul>
       </div>
-      <div className="absolute bottom-0 mt-auto w-80 ml-1 bg-white pb-2">
+      <div className="absolute bottom-0 w-80 ml-1 bg-white pb-2">
         <input
           placeholder="Type a message..."
           onChange={(e) => setMessageText(e.target.value)}
           value={messageText}
-          className="w-full border-2 border-gray-200 rounded-lg py-2 px-4 bg-gray-100 focus:outline-none focus:border-blue-500"
+          className="w-full border-2 border-gray-200 rounded-lg py-2 px-4 bg-gray-100 focus:outline-none focus:border-blue-500 sm:w-56"
         />
         <button
           onClick={sendMessage}
