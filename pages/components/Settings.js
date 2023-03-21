@@ -41,7 +41,7 @@ function Settings() {
               Thank you for being part a of MetaStream!
             </h1>
             <p className="text-white text-2xl">👀 Your challanges include :</p>
-            <nav className="text-white text-lg ">
+            <nav className="text-white text-lg">
               <li>Watch a live stream from League of Legends for 10 minutes</li>
               <li>Watch a live stream from Art for 10 minutes</li>
               <li>
