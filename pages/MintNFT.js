@@ -38,9 +38,7 @@ function MintNFT() {
             <h1 className="text-white text-4xl font-semibold max-sm:text-2xl">
               Thank you for being part a of MetaStream!
             </h1>
-            <p className="text-white text-2xl">
-              👀 Your today's challanges include :
-            </p>
+            <p className="text-white text-2xl">👀 Today challanges include :</p>
             <nav className="text-white text-lg ">
               <li>Watch a live stream from League of Legends for 10 minutes</li>
               <li>Watch a live stream from Art for 10 minutes</li>
