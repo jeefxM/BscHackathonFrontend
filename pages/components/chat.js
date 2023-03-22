@@ -69,7 +69,7 @@ const Chat = () => {
 
     const messageObject = {
       sender: name,
-      avatar: `https://eu.ui-avatars.com/api/?name=${firstLetter}&background=&color=fff`,
+      avatar: localStorage.getItem("avatar"),
       content: messageText,
       timestamp: Date().substring(16, 21),
     };
