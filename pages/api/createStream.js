@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     const response = await fetch(`https://livepeer.studio/api/stream`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.LIVEPEER_API_KEY}`,
+        Authorization: `Bearer ${process.env.NEXT_LIVEPEER_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

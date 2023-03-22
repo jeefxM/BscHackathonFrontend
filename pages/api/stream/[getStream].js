@@ -6,7 +6,7 @@ export default async function handler(req, res) {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${process.env.LIVEPEER_API_KEY}`,
+          Authorization: `Bearer ${process.env.NEXT_LIVEPEER_API_KEY}`,
           "Content-Type": "application/json",
         },
       }
