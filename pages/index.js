@@ -5,24 +5,22 @@ import { MdRefresh, MdArrowForward } from "react-icons/md";
 import Link from "next/link";
 const LivepeerAuth = () => {
   const [imgUrl, updateImg] = useState("");
-  const [avatarName, updateAvatarName] = useState();
 
-  useEffect(() => {
-    if (localStorage.getItem("avatar")) {
-      updateImg(localStorage.getItem("avatar"));
-    } else {
-      updateImg("https://api.dicebear.com/5.x/pixel-art/svg?seed=Niko");
-    }
-  });
+  const [avatarName, updateAvatarName] = useState();
 
   const getRandomAvatar = async () => {
     const res = await fetch(
       `https://api.dicebear.com/5.x/pixel-art/svg?seed=${avatarName}`
     );
-
     updateImg(res.url);
-
-    localStorage.setItem("avatar", res.url);
+  };
+  useEffect(() => {
+    if (localStorage.getItem("avatar")) {
+      updateImg(localStorage.getItem("avatar"));
+    }
+  }, []);
+  const saveAvatar = () => {
+    localStorage.setItem("avatar", imgUrl);
     localStorage.setItem("name", avatarName);
   };
 
@@ -49,14 +47,28 @@ const LivepeerAuth = () => {
           <MdRefresh className="mr-1" />
           Generate
         </Button>
+        <div className="save  ">
+          <Button
+            auto
+            onClick={saveAvatar}
+            scale={2}
+            style={{
+              backgroundColor: "#43DA49",
+              color: "white",
+              border: "black solid 2px",
+            }}
+          >
+            Save
+          </Button>
+        </div>
       </div>
-      <div className="move block">
+      <div className="move flex gap-2">
         <Link href="/CreateRoom">
           <Button
             auto
             scale={2}
             style={{
-              backgroundColor: "#43DA49",
+              backgroundColor: "#F0D22D",
               color: "white",
               border: "black solid 2px",
             }}

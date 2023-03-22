@@ -52,7 +52,12 @@ const Chat = () => {
   const sendMessage = () => {
     const storedName = localStorage.getItem("name");
     if (!storedName) {
-      secondHandler();
+      localStorage.setItem("name", "randy");
+      localStorage.setItem(
+        "avatar",
+        "https://api.dicebear.com/5.x/pixel-art/svg?seed=Niko"
+      );
+
       if (name) {
         localStorage.setItem("name", name);
         setName(name);
@@ -126,19 +131,6 @@ const Chat = () => {
         >
           Send
         </button>
-        <Modal
-          visible={secondModal}
-          onClose={closeSecondHandler}
-          key="secondmodal"
-        >
-          <Modal.Content>
-            <p>Write your Name:</p>
-          </Modal.Content>
-          <Input width="100%" onChange={(e) => setName(e.target.value)}></Input>
-          <Modal.Action passive onClick={() => closeSecondHandler(false)}>
-            Submit
-          </Modal.Action>
-        </Modal>
       </div>
     </div>
   );
