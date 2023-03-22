@@ -4,7 +4,7 @@ import Gun from "gun";
 import { Modal, Input } from "@geist-ui/core";
 
 const gun = Gun({
-  peers: ["http://localhost:5050"],
+  peers: ["https://server-f899.onrender.com/"],
 });
 
 const currentState = {
