@@ -11,14 +11,13 @@ export async function getServerSideProps({ params }) {
     {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_LIVEPEER_API_KEY}`,
+        Authorization: `Bearer 244ee2e7-3e32-422a-893c-d105086ad534`,
         "Content-Type": "application/json",
       },
     }
   );
 
   const data = await res.json();
-  console.log(data);
 
   return {
     props: {
@@ -27,7 +26,7 @@ export async function getServerSideProps({ params }) {
   };
 }
 
-export default function StreamDetails({ stream, toggle }) {
+export default function StreamDetails({ stream }) {
   const {
     query: { id },
   } = useRouter();
