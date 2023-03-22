@@ -23,8 +23,8 @@ const FAQ = () => {
                 on the Fleek decentralized hosting platform. It uses Livepeer
                 for decentralized streaming and GUN for decentralized chatting,
                 which means that the entire web app is fully decentralized.
-                Users can stream on the platform by clicking on "Create Stream"
-                on the main page, naming their stream, and using the provided
+                Users can stream on the platform by clicking on Create Stream on
+                the main page, naming their stream, and using the provided
                 server URL and stream key in OBS or any other streaming app. The
                 platform also features a Watch and Earn system where viewers can
                 earn rewards by completing daily challenges and a pool contract
@@ -51,8 +51,8 @@ const FAQ = () => {
                 How can I stream with MetaStream?
               </h3>
               <p className="text-gray-700">
-                To get started with MetaStream, simply click on "Create Stream"
-                on the main page. You will receive a prompt to name your stream.
+                To get started with MetaStream, simply click on Create Stream on
+                the main page. You will receive a prompt to name your stream.
                 Once you have given your stream a name, you will be redirected
                 to the streaming page where you can find your live server URL
                 and stream key. In OBS, go to File/Settings/Stream Custom and

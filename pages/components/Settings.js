@@ -1,14 +1,12 @@
 import React from "react";
-import MetamaskConnect from "./components/metamaskConnect";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+
 import {
   useAddress,
-  ConnectWallet,
   useContract,
   useNFTBalance,
   useBalance,
 } from "@thirdweb-dev/react";
-import { useState, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { Web3Button } from "@thirdweb-dev/react";
 import { MdArrowBack } from "react-icons/md";
 import Link from "next/link";
@@ -40,10 +38,8 @@ function Settings() {
             <h1 className="text-white text-4xl font-semibold">
               Thank you for being part a of MetaStream!
             </h1>
-            <p className="text-white text-2xl">
-              👀 Your today's challanges include :
-            </p>
-            <nav className="text-white text-lg ">
+            <p className="text-white text-2xl">👀 Your challanges include :</p>
+            <nav className="text-white text-lg">
               <li>Watch a live stream from League of Legends for 10 minutes</li>
               <li>Watch a live stream from Art for 10 minutes</li>
               <li>

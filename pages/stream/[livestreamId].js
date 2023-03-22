@@ -39,9 +39,9 @@ export default function StreamDetails({ stream, toggle }) {
             <h2 className="">📹</h2>
             <h1 className=""> {stream.name}</h1>
           </div>
-          <div className="flex flex-row sm:flex-col ">
+          <div className="flex flex-row sm:flex-col">
             <div
-              className="w-4/6  h-[100%] border-2 border-black  dark:border-white sm:h-[40vh] sm:w-full sm:gap-12rounded-2xl "
+              className="w-4/6  h-[100%] border-2 border-black  dark:border-white sm:h-[40vh] sm:w-full sm:gap-12 rounded-2xl "
               key={id}
             >
               {stream.isActive ? (
@@ -64,11 +64,11 @@ export default function StreamDetails({ stream, toggle }) {
                 </div>
               )}
             </div>
-            <div className="max-w-2/6 sm:w-full sm:h-[300px] mx-2 mt-3">
+            <div className="w-96 bg-white sm:mt-3 ml-3 sm:w-96">
               <Chat />
             </div>
           </div>
-          <div className="pt-3 flex flex-col gap-2">
+          <div className="pt-3 flex flex-col gap-2 mb-5">
             <Input.Password
               label="Stream Key"
               className="streamkey"
