@@ -6,16 +6,13 @@ import Chat from "../components/chat";
 import { Input } from "@geist-ui/core";
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(
-    `https://livepeer.studio/api/stream/${params.livestreamId}`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer deab6d40-4494-4b17-880d-777e3e348db2`,
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const res = await fetch(`/api/stream/${params.livestreamId}`, {
+    method: "GET",
+    // headers: {
+    //   Authorization: `Bearer deab6d40-4494-4b17-880d-777e3e348db2`,
+    //   "Content-Type": "application/json",
+    // },
+  });
 
   const data = await res.json();
 
