@@ -18,6 +18,7 @@ export async function getServerSideProps({ params }) {
   );
 
   const data = await res.json();
+  console.log(data);
 
   return {
     props: {
